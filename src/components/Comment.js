@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Comment extends React.Component {
+export default class Comment extends React.Component {
   _handleDelete(event){
     event.preventDefault();
     if(confirm('Are you sure?')){
@@ -24,5 +24,3 @@ class Comment extends React.Component {
     )
   }
 }
-
-export default Comment;

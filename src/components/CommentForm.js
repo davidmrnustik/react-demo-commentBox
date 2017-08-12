@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CommentForm extends React.Component {
+export default class CommentForm extends React.Component {
   constructor(){
     super();
     this.state = {
@@ -57,5 +57,3 @@ class CommentForm extends React.Component {
     );
   }
 }
-
-export default CommentForm;

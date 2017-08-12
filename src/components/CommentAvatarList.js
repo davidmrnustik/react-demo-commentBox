@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CommentAvatarList extends React.Component {
+export default class CommentAvatarList extends React.Component {
   render(){
     const { avatars = [] } = this.props;
     return(
@@ -17,5 +17,3 @@ class CommentAvatarList extends React.Component {
     )
   }
 }
-
-export default CommentAvatarList;

@@ -4,7 +4,7 @@ import CommentForm from './commentform';
 import CommentAvatarList from './commentavatarlist';
 import jQuery from 'jquery';
 
-class CommentBox extends React.Component {
+export default class CommentBox extends React.Component {
   constructor(){
     super();
 
@@ -148,5 +148,3 @@ class CommentBox extends React.Component {
     )
   }
 }
-
-export default CommentBox;
