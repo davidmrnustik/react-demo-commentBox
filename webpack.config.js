@@ -6,7 +6,7 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 });
 
 module.exports = {
-  entry: __dirname + '/src/index.js',
+  entry: __dirname + '/src/app.js',
   devtool: 'eval-source-map',
   module: {
     rules: [

@@ -2,6 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-ReactDOM.render(<App/>, document.getElementById('app'), function(){
+ReactDOM.render(<App/>, document.getElementById('comment-box'), function(){
   console.timeEnd('react-app')
 });
