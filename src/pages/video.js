@@ -6,7 +6,7 @@ export default class VIdeoPage extends React.Component {
     return(
       <div>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/4ALXnajtelM" frameBorder="0" allowFullScreen></iframe>
-        <CommentBox />
+        <CommentBox apiUrl="3" />
       </div>
     )
   }

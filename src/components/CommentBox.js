@@ -80,7 +80,7 @@ export default class CommentBox extends React.Component {
   _fetchComments(){
     jQuery.ajax({
       method: 'GET',
-      url: 'http://localhost:3000/comments/',
+      url: `http://localhost:3000/comments?page=${this.props.apiUrl}`,
       success: (comments) => { // arrow function preserves the this binding to our class
         this.setState({ comments })
       }
@@ -97,6 +97,7 @@ export default class CommentBox extends React.Component {
       //id: this.state.comments.length + 1,
       author,
       body,
+      page: this.props.apiUrl,
       avatarUrl: `https://randomuser.me/api/portraits/thumb/men/${parseInt(this.state.comments.length + 1)}.jpg`
     }
 
@@ -155,4 +156,8 @@ export default class CommentBox extends React.Component {
       </div>
     )
   }
+}
+
+CommentBox.propTypes = {
+  apiUrl: React.PropTypes.string.isRequired
 }

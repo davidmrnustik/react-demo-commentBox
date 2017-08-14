@@ -7,7 +7,7 @@ export default class PicturePage extends React.Component {
       <div>
         <img src="http://lorempixel.com/640/480/nature" />
 
-        <CommentBox />
+        <CommentBox apiUrl="2" />
       </div>
     )
   }
