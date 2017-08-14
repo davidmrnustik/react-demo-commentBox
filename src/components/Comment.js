@@ -7,6 +7,8 @@ export default class Comment extends React.Component {
     this.state = {
       isAbusive: false
     }
+    this._toggleAbuse = this._toggleAbuse.bind(this);
+    this._handleDelete = this._handleDelete.bind(this);
   }
   /*_handleDelete(event){
     event.preventDefault();
@@ -15,7 +17,7 @@ export default class Comment extends React.Component {
     }
   }*/
   _handleDelete(){
-    this.props.onDelete(this.props.comment);
+    this.props.onDelete(this.props.id);
   }
   _toggleAbuse(){
     this.setState({
@@ -28,7 +30,7 @@ export default class Comment extends React.Component {
     if(!this.state.isAbusive){
       commentBody = this.props.body;
       abusiveConfirmation = 
-          <CommentConfirmation onConfirm={this._toggleAbuse.bind(this)}>
+          <CommentConfirmation onConfirm={this._toggleAbuse}>
             Report abuse
           </CommentConfirmation>
     } else {
@@ -42,7 +44,7 @@ export default class Comment extends React.Component {
           {commentBody}
         </p>
         <div className="comment-footer">
-          <CommentConfirmation onConfirm={this._handleDelete.bind(this)}>
+          <CommentConfirmation onConfirm={this._handleDelete}>
             Delete comment?
           </CommentConfirmation>
 

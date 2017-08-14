@@ -7,6 +7,8 @@ export default class CommentConfirmation extends React.Component {
     this.state = {
       showConfirm: false
     };
+    this._toggleConfirmAction = this._toggleConfirmAction.bind(this);
+    this._confirmAction = this._confirmAction.bind(this);
   }
 
   _toggleConfirmAction(e){
@@ -33,14 +35,14 @@ export default class CommentConfirmation extends React.Component {
     if(this.state.showConfirm){
       confirmNode = (
         <span>
-          <a href="" onClick={this._confirmAction.bind(this)}>Yes</a>
+          <a href="" onClick={this._confirmAction}>Yes</a>
           <span> - or - </span>
-          <a href="" onClick={this._toggleConfirmAction.bind(this)}> No</a>
+          <a href="" onClick={this._toggleConfirmAction}> No</a>
         </span>
       )
     } else {
       confirmNode = (
-        <a href="" onClick={this._toggleConfirmAction.bind(this)}>
+        <a href="" onClick={this._toggleConfirmAction}>
           {this.props.children}
         </a>
       )

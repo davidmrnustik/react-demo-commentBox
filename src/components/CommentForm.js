@@ -14,8 +14,8 @@ export default class CommentForm extends React.Component {
       return;
     }
 
-    let author = this._author;
-    let body = this._body;
+    const author = this._author;
+    const body = this._body;
 
     this.props.addComment(author.value, body.value);
 
@@ -26,7 +26,7 @@ export default class CommentForm extends React.Component {
       characters: 0
     })
   }
-  _getCharacterCount(e){
+  _getCharacterCount(){
     this.setState({
       characters: this._body.value.length
     });

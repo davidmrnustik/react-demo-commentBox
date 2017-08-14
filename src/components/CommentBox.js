@@ -8,6 +8,9 @@ export default class CommentBox extends React.Component {
   constructor(){
     super();
 
+    this._addComment = this._addComment.bind(this);
+    this._deleteComment = this._deleteComment.bind(this); // pre-bind a handle like this, we olny using one reference in memory, and not recreating them everytime when app gets rendered
+
     this.state = {
       showComments: false,
       comments: []
@@ -35,11 +38,16 @@ export default class CommentBox extends React.Component {
     return this.state.comments.map((comment) => {
       return (
         <Comment
+          /*
           avatarUrl={comment.avatarUrl}
           author={comment.author}
           body={comment.body}
           comment={comment}
-          onDelete={this._deleteComment.bind(this)} // will later be called in the context of the CommentBox component
+          */
+          {...comment}
+          //onDelete={this._deleteComment.bind(this)} // will later be called in the context of the CommentBox component
+          //onDelete={(commentID) => this._deleteComment(commentID)} // it's the same like above, because inside the arrow function we invoke the function
+          onDelete = {this._deleteComment}
           key={comment.id} />
       );
     });
@@ -85,7 +93,7 @@ export default class CommentBox extends React.Component {
     })
   }
   _addComment(author, body){
-    let comment = {
+    const comment = {
       //id: this.state.comments.length + 1,
       author,
       body,
@@ -107,14 +115,14 @@ export default class CommentBox extends React.Component {
       })
       // state is only updated when we get the new comment from the API request
   }
-  _deleteComment(comment){
+  _deleteComment(commentID){
     jQuery.ajax({
       method: 'DELETE',
-      url: `http://localhost:3000/comments/${comment.id}`
+      url: `http://localhost:3000/comments/${commentID}`
     });
 
     const comments = [...this.state.comments]; // use spread operator to clone existing array
-    const commentIndex = comments.indexOf(comment);
+    const commentIndex = comments.indexOf(commentID);
     comments.splice(commentIndex, 1);
 
     this.setState({ comments });
@@ -138,7 +146,7 @@ export default class CommentBox extends React.Component {
     }
     return(
       <div className="comment-box">
-        <CommentForm addComment={this._addComment.bind(this)} />
+        <CommentForm addComment={this._addComment} />
         <CommentAvatarList avatars={this._getAvatars()} />
         <h3>Comments</h3>
         <div className="comment-count">{this._getCommentsTitle(comments.length)}</div>

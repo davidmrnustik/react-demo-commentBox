@@ -7,17 +7,14 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 
 module.exports = {
   entry: __dirname + '/src/index.js',
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env']
-          }
-        }
+        use: ['babel-loader', 'eslint-loader'],
+        enforce: 'pre'
       }
     ]
   },
