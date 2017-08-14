@@ -86,7 +86,7 @@ export default class CommentBox extends React.Component {
   }
   _addComment(author, body){
     let comment = {
-      id: this.state.comments.length + 1,
+      //id: this.state.comments.length + 1,
       author,
       body,
       avatarUrl: `https://randomuser.me/api/portraits/thumb/men/${parseInt(this.state.comments.length + 1)}.jpg`
